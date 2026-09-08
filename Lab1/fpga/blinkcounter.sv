@@ -11,7 +11,7 @@ module blinkCounter (input logic clk,
 					 
 					 logic [31:0] counter;
 					 
-					 parameter DIV = 20000000; // clk frequency(48MHz) / desired frequency(2.4Hz)
+					 parameter DIV = 10000000; // clk frequency(48MHz) / desired frequency(2.4Hz) / 2
 					 
 
 					 always_ff @(posedge clk) begin
