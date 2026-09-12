@@ -12,9 +12,11 @@ module counter #(parameter int width = 2,
 				 input logic reset,
 				 input logic enable,
 				 
-				 output logic out);
+				 output logic out
+				 output logic count_out);
 				 
 				 logic [width-1:0] count;
+				 assign count_out = count;
 				 
 
 				 always_ff @(posedge clk) begin
