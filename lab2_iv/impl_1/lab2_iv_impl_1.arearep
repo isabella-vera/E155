@@ -1,0 +1,54 @@
+----------------------------------------------------------------------
+Report for cell top.TECH
+Register bits:  51 of 5280 (0.966%)
+I/O cells:      31
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        24          100.0
+                            FD1P3XZ        51          100.0
+                         HSOSC_CORE         1          100.0
+                                 IB        14          100.0
+                               LUT4        76          100.0
+                                 OB        17          100.0
+SUB MODULES
+      counter(width=21,max=2000000)         1
+counter(width=25,max=1200000,outwidth=2)         1
+                            scanner         1
+                       sevenSegment         1
+                              TOTAL       187
+----------------------------------------------------------------------
+Report for cell scanner.v1
+Instance Path : scanner
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        13           54.2
+                            FD1P3XZ        29           56.9
+                               LUT4        34           44.7
+SUB MODULES
+counter(width=25,max=1200000,outwidth=2)         1
+                              TOTAL        77
+----------------------------------------------------------------------
+Report for cell counter(width=25,max=1200000,outwidth=2).v1
+Instance Path : scanner.rowSelect
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        13           54.2
+                            FD1P3XZ        29           56.9
+                               LUT4        34           44.7
+                              TOTAL        76
+----------------------------------------------------------------------
+Report for cell counter(width=21,max=2000000).v1
+Instance Path : timeMultiplexer
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        11           45.8
+                            FD1P3XZ        22           43.1
+                               LUT4        29           38.2
+                              TOTAL        62
+----------------------------------------------------------------------
+Report for cell sevenSegment.v1
+Instance Path : segments
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         7            9.2
+                              TOTAL         7

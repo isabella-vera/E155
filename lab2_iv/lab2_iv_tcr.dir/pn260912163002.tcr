@@ -1,0 +1,27 @@
+#Start recording tcl command: 9/12/2026 14:07:20
+#Project Location: C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv; Project name: lab2_iv
+prj_open "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv/lab2_iv.rdf"
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+prj_add_source "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv/source/impl_1/top_tb.sv"
+#Stop recording: 9/12/2026 16:30:02
