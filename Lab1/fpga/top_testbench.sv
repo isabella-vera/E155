@@ -2,7 +2,7 @@
 
 module top_tb();
 
-    // DUT signals (no input/output keywords -- this is a testbench, not a port)
+    // DUT signals (no input/output keywords)
     logic [3:0] s;
     logic       reset;
     logic       enable;
