@@ -1,0 +1,97 @@
+`timescale 1ns/1ps
+
+module scanner_tb;
+
+  // prepare to change parameters for quicker simulations
+  localparam int  FAST_MAX   = 4;     // clocks per scan state, sim-only
+  localparam time CLK_PERIOD = 20ns;
+
+  logic clk, reset, enable;
+  logic [3:0] rows;
+
+  scanner dut (
+    .clk    (clk),
+    .reset  (reset),
+    .enable (enable),
+    .rows   (rows)
+  );
+
+  // shrink the internal counter's rollover for a fast simulation
+  defparam dut.rowSelect.max = FAST_MAX;
+
+  // clock generation
+  initial clk = 0;
+  always #(CLK_PERIOD/2) clk = ~clk;
+
+  // expected sequence, matches scanner's decode table
+  localparam logic [3:0] SEQ [0:3] = '{4'b1000, 4'b0100, 4'b0010, 4'b0001};
+
+  int errors = 0;
+
+  task automatic check(input logic [3:0] expected, input string label);
+    if (rows !== expected) begin
+      $error("[FAIL] %s : expected rows=%b, got rows=%b @ %0t", label, expected, rows, $time);
+      errors++;
+    end else begin
+      $display("[PASS] %s : rows=%b @ %0t", label, rows, $time);
+    end
+  endtask
+
+  // advance exactly one scan state's worth of clocks
+  task automatic wait_one_state();
+    repeat (FAST_MAX) @(posedge clk);
+    #1; // let combinational decode settle
+  endtask
+
+  initial begin
+    errors = 0;
+
+    // ---- reset behavior ----
+    reset = 1; enable = 0;
+    repeat (2) @(posedge clk);
+    #1;
+    check(SEQ[0], "reset holds state 0");
+
+    // ---- disabled: state must not advance ----
+    reset = 0;
+    repeat (3) @(posedge clk);
+    #1;
+    check(SEQ[0], "disabled: state does not advance");
+
+    // ---- enabled: walk through two full four-state cycles ----
+    enable = 1;
+    for (int cyc = 0; cyc < 2; cyc++) begin
+      for (int i = 0; i < 4; i++) begin
+        check(SEQ[i], $sformatf("cycle %0d state %0d", cyc, i));
+        wait_one_state(); // advance to next state
+      end
+    end
+    // loop above always checks-then-advances, so we are back at SEQ[0] now
+
+    // ---- pause mid-cycle ----
+    enable = 0;
+    repeat (3) @(posedge clk);
+    #1;
+    check(SEQ[0], "paused: state holds");
+
+    // ---- resume, then reset mid-cycle ----
+    enable = 1;
+    wait_one_state();
+    check(SEQ[1], "resumed: advances to state 1");
+
+    reset = 1;
+    @(posedge clk);
+    #1;
+    check(SEQ[0], "reset mid-cycle returns to state 0");
+    reset = 0;
+
+    // ---- summary ----
+    if (errors == 0)
+      $display("\n*** ALL SCANNER TESTS PASSED ***\n");
+    else
+      $display("\n*** SCANNER TESTS FAILED: %0d error(s) ***\n", errors);
+
+    $finish;
+  end
+
+endmodule
