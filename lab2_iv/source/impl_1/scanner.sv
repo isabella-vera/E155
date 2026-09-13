@@ -10,7 +10,7 @@ module scanner(input logic clk,
 			   output logic [3:0] rows);
 			   
 			   logic clkEdge;
-			   logic [24:0] count;
+			   logic [1:0] count;
 			   
 			   counter #(25, 1200000, 2) rowSelect(clk, reset, enable, count);
 			   
