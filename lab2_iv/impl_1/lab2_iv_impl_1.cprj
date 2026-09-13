@@ -1,8 +1,0 @@
--ver "C:/lscc/radiant/2026.1/ip/pmi/pmi_iCE40UP.v"
--lib pmi -vhd "C:/lscc/radiant/2026.1/ip/pmi/pmi_iCE40UP.vhd"
--sver "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv/source/impl_1/top.sv" "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv/source/impl_1/counter.sv" "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv/source/impl_1/scanner.sv" "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv/source/impl_1/sevenSegment.sv"
--path "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv" "C:/Users/ivera/Downloads/fpga_dev_board_test/lab2_iv"
--top top
--isTop
--a "iCE40UP"
--t "iCE40UP5K"
