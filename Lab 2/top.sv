@@ -25,7 +25,7 @@ module top (input logic [3:0] s1,
 			logic digitSelect; // 
 			logic [3:0] digit; // current switch input (choosing from top input s1 and s2)
 			
-			counter #(21, 2000000, 1) timeMultiplexer (int_osc, reset, enable, digitSelect);
+			counter #(21, 200000, 1) timeMultiplexer (int_osc, reset, enable, digitSelect);
 					  
 			assign digit = digitSelect ?  s1 : s2;
 			assign a1 = digitSelect ? 1 : 0;
