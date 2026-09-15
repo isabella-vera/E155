@@ -37,9 +37,9 @@ module top (input logic [3:0] s1,
 			// for scanning
 			scanner scanner(int_osc, reset, enable, rows);
 			
-			assign leds[0] = cols[0];
-			assign leds[1] = cols[1];
-			assign leds[2] = cols[2];
-			assign leds[3] = cols[3];
+			assign leds[0] = ~cols[0];
+			assign leds[1] = ~cols[1];
+			assign leds[2] = ~cols[2];
+			assign leds[3] = ~cols[3];
 
 endmodule 
