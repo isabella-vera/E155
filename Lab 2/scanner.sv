@@ -12,7 +12,7 @@ module scanner(input logic clk,
 			   logic clkEdge;
 			   logic [1:0] count;
 			   
-			   counter #(25, 1200000, 2) rowSelect(clk, reset, enable, count);
+	counter #(23, 6000000, 2) rowSelect(clk, reset, enable, count);
 			   
 			   always_comb begin
 				case (count)
