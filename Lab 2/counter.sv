@@ -5,38 +5,29 @@
 // Last updated 9/11/2026
 // This module was modified for lab 2 to include cleaner verilog and be more compatible for various counter uses
 
-module counter #(parameter int width = 2,
-				 parameter int max = 1,
-				 parameter int outwidth = 1)
-	
-			    (input logic clk,
-				 input logic reset,
-				 input logic enable,
-				 
-				 output logic [outwidth-1:0] out);
-				 
-				 logic [width-1:0] count;
-				 
+module counter #(
+    parameter int width = 2,
+    parameter int max = 1
+)(
+    input logic clk,
+    input logic reset,
+    input logic enable,
 
-				 always_ff @(posedge clk) begin
-					if (reset) begin
-						count <= '0;
-						out <= '0;
-					end	
-					
-					else if (enable) begin
-						if (count == max - 1) begin
-							out <= out + 1'b1;
-							count <= '0;
-						end else begin
-							count <= count + 1'b1;
-						end
-					end 
-					
-					else begin
-						count <= count;
-					end
-					
-				end
-				 
+    output logic [width-1:0] out
+);
+
+    always_ff @(posedge clk) begin
+        if (reset) begin
+            out <= '0;
+        end
+        else if (enable) begin
+            if (out == max - 1) begin
+                out <= '0;
+            end
+            else begin
+                out <= out + 1'b1;
+            end
+        end
+    end
+
 endmodule
