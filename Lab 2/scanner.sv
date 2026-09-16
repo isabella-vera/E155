@@ -21,6 +21,9 @@ module scanner(input logic clk,
         else begin
             rows = 4'b0001;
         end
+		else begin
+			rows = 4'b0000;
+		end
     end
 
 endmodule
