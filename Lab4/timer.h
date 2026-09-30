@@ -34,25 +34,20 @@
 typedef struct {
     volatile uint32_t CR1;          // 0x00
     volatile uint32_t CR2;          // 0x04
-    volatile uint32_t SMCR;         // 0x08 -- reserved on TIM16 (no ETR/trigger
-                                     //         inputs); real on TIM15. Unused by
-                                     //         this code either way.
+    volatile uint32_t SMCR;         // 0x08 -- reserved on TIM16
     volatile uint32_t DIER;         // 0x0C
     volatile uint32_t SR;           // 0x10
     volatile uint32_t EGR;          // 0x14
     volatile uint32_t CCMR1;        // 0x18 -- covers CH1 (and CH2 on TIM15)
-    uint32_t          RESERVED0;    // 0x1C -- CCMR2 slot; unused since neither
-                                     //         timer has CH3/CH4
+    uint32_t          RESERVED0;    // 0x1C -- CCMR2 slot (unused)
     volatile uint32_t CCER;         // 0x20
     volatile uint32_t CNT;          // 0x24
     volatile uint32_t PSC;          // 0x28
     volatile uint32_t ARR;          // 0x2C
     volatile uint32_t RCR;          // 0x30
     volatile uint32_t CCR1;         // 0x34
-    volatile uint32_t CCR2;         // 0x38 -- reserved on TIM16 (CH2 doesn't
-                                     //         exist there); real on TIM15
-    uint32_t          RESERVED1[2]; // 0x3C, 0x40 -- CCR3/CCR4 slots; neither
-                                     //         timer has CH3/CH4
+    volatile uint32_t CCR2;         // 0x38 -- reserved on TIM16 
+    uint32_t          RESERVED1[2]; // 0x3C, 0x40 -- CCR3/CCR4 slots
     volatile uint32_t BDTR;         // 0x44
     volatile uint32_t DCR;          // 0x48
     volatile uint32_t DMAR;         // 0x4C
